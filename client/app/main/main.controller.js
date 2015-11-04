@@ -3,6 +3,8 @@
 
 function MainController($scope, $http, socket, User) {
   var self = this;
+  var usr = User.get();
+
   this.awesomeThings = [];
 
   $http.get('/api/things').then(function(response) {
@@ -32,7 +34,7 @@ function MainController($scope, $http, socket, User) {
   //    navigator.geolocation.getCurrentPosition(function (position) {
   //      // set up user location obj
   //      var location = {};
-  //      location.person = User.get();
+  //      location.person = usr;
   //      location.latitude = position.coords.latitude;
   //      location.longitude = position.coords.longitude;
   //      // make api call to update user db info
@@ -48,9 +50,8 @@ function MainController($scope, $http, socket, User) {
   //  }
   //})()
 
-  var usr = User.get();
-
 $scope.testApi = function () {
+  $scope.agreeToLocation = true;
   if (!!navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       // set up user location obj
@@ -59,8 +60,12 @@ $scope.testApi = function () {
       location.latitude = position.coords.latitude;
       location.longitude = position.coords.longitude;
       // make api call to update user db info
-      $http.post('/api/users/me/location', location);
-
+      $http.post('/api/users/me/location', location).success(function (res) {
+        console.log('success res: ', res);
+      })
+      .error(function (err) {
+          console.log('error: ', err);
+      });
     }, function () {
       // if err retrieving location
       $scope.locationUnavailable = true;
@@ -69,7 +74,7 @@ $scope.testApi = function () {
     //  location not available in browser
     $scope.locationUnavailable = true;
   }
-  //$http.post('/api/users/me/location', usr);
+  $http.post('/api/users/me/location', usr);
 
 };
 

@@ -135,20 +135,23 @@ exports.updateUserLocation = function(req, res, next) {
   obj.user_id = req.body.person._id;
   obj.latitude = req.body.latitude;
   obj.longitude = req.body.longitude;
-  console.log('obj props: ', obj);
 
   User.findOneAsync({ _id: obj.user_id }, '-salt -hashedPassword')
     .then(function(user) { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
       }
-      user.update({location:
-        {
-          latitude: obj.latitude, longitude: obj.longitude
-        }
-      });
-      console.log('UPDATING USER LOCATION!: ');
-      res.json(user);
+      //console.log('user TO update: ', user);
+      console.log('OBJ TO USE: ', obj);
+      user.location.latitude = obj.latitude;
+      user.location.longitude = obj.longitude;
+      return user.saveAsync()
+        .then(function() {
+          console.log('UPDATING USER LOCATION!: ');
+          res.json(user).end();
+          //res.status(204).end();
+        })
+        .catch(validationError(res));
     })
     .catch(function(err) {
       return next(err);
