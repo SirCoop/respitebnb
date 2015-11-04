@@ -42,7 +42,7 @@
         //icon:'//developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
         icon:'.././assets/images/google-maps-blue-marker.png'
       },
-    }
+    };
 
     self.availableHostMarkers = [
       {

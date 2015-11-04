@@ -5,7 +5,7 @@ angular.module('respitebnbApp')
     $scope.menu = [
       {
         'title': 'Host',
-        'state': 'bhost'
+        'state': 'behost'
       },
       {
         'title': 'find Host',
