@@ -39,21 +39,21 @@ Thing.find({}).removeAsync()
     });
   });
 
-//User.find({}).removeAsync()
-//  .then(function() {
-//    User.createAsync({
-//      provider: 'local',
-//      name: 'Test User',
-//      email: 'test@example.com',
-//      password: 'test'
-//    }, {
-//      provider: 'local',
-//      role: 'admin',
-//      name: 'Admin',
-//      email: 'admin@example.com',
-//      password: 'admin'
-//    })
-//    .then(function() {
-//      console.log('finished populating users');
-//    });
-//  });
+User.find({}).removeAsync()
+  .then(function() {
+    User.createAsync({
+      provider: 'local',
+      name: 'Test User',
+      email: 'test@example.com',
+      password: 'test'
+    }, {
+      provider: 'local',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@example.com',
+      password: 'admin'
+    })
+    .then(function() {
+      console.log('finished populating users');
+    });
+  });
