@@ -119,7 +119,35 @@ exports.me = function(req, res, next) {
       if (!user) {
         return res.status(401).end();
       }
-      console.log('host found: ', user);
+      //console.log('host found: ', user);
+      res.json(user);
+    })
+    .catch(function(err) {
+      return next(err);
+    });
+};
+
+/**
+ * Update my location
+ */
+exports.updateUserLocation = function(req, res, next) {
+  var obj = {};
+  obj.user_id = req.body.person._id;
+  obj.latitude = req.body.latitude;
+  obj.longitude = req.body.longitude;
+  console.log('obj props: ', obj);
+
+  User.findOneAsync({ _id: obj.user_id }, '-salt -hashedPassword')
+    .then(function(user) { // don't ever give out the password or salt
+      if (!user) {
+        return res.status(401).end();
+      }
+      user.update({location:
+        {
+          latitude: obj.latitude, longitude: obj.longitude
+        }
+      });
+      console.log('UPDATING USER LOCATION!: ');
       res.json(user);
     })
     .catch(function(err) {

@@ -13,4 +13,7 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
+//  for updating user location on login
+router.post('/me/location', auth.isAuthenticated(), controller.updateUserLocation)
+
 module.exports = router;

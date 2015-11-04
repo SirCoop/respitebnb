@@ -1,7 +1,7 @@
 'use strict';
 (function() {
 
-function MainController($scope, $http, socket) {
+function MainController($scope, $http, socket, User) {
   var self = this;
   this.awesomeThings = [];
 
@@ -25,6 +25,56 @@ function MainController($scope, $http, socket) {
   $scope.$on('$destroy', function() {
     socket.unsyncUpdates('thing');
   });
+
+  //  get user location, add to db for user
+  //(function () {
+  //  if (!!navigator.geolocation) {
+  //    navigator.geolocation.getCurrentPosition(function (position) {
+  //      // set up user location obj
+  //      var location = {};
+  //      location.person = User.get();
+  //      location.latitude = position.coords.latitude;
+  //      location.longitude = position.coords.longitude;
+  //      // make api call to update user db info
+  //      $http.post('/api/users/me/location', location);
+  //
+  //    }, function () {
+  //      // if err retrieving location
+  //      $scope.locationUnavailable = true;
+  //    })
+  //  } else {
+  //    //  location not available in browser
+  //    $scope.locationUnavailable = true;
+  //  }
+  //})()
+
+  var usr = User.get();
+
+$scope.testApi = function () {
+  if (!!navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      // set up user location obj
+      var location = {};
+      location.person = usr;
+      location.latitude = position.coords.latitude;
+      location.longitude = position.coords.longitude;
+      // make api call to update user db info
+      $http.post('/api/users/me/location', location);
+
+    }, function () {
+      // if err retrieving location
+      $scope.locationUnavailable = true;
+    });
+  } else {
+    //  location not available in browser
+    $scope.locationUnavailable = true;
+  }
+  //$http.post('/api/users/me/location', usr);
+
+};
+
+
+
 }
 
 angular.module('respitebnbApp')

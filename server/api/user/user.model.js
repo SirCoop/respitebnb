@@ -19,7 +19,11 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  github: {}
+  github: {},
+  location: {
+    latitude: Number,
+    longitude: Number
+  }
 });
 
 /**
@@ -137,6 +141,7 @@ UserSchema.methods = {
    * @return {Boolean}
    * @api public
    */
+
   authenticate: function(password, callback) {
     if (!callback) {
       return this.password === this.encryptPassword(password);
