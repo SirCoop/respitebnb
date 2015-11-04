@@ -15,7 +15,12 @@ angular.module('respitebnbApp')
         controller: 'UserController',
         controllerAs: 'user',
         resolve: {
-          
+        //  myPosition: function (Location) {
+        //    return Location.getMyPosition();
+        //  }
+          me: function (User) {
+            return User.get();
+          }
         }
       });
   });

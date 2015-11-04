@@ -4,24 +4,44 @@
 'use strict';
 (function() {
 
-  function UserController($scope, $http, socket, User, Auth, Location) {
-    var self = this, myLocation;
-    //this.awesomeThings = [];
+  function UserController($scope, $http, $q, socket, User, Auth, me) {
+    var self = this;
+    //  me is the modified mongo version of User.get()
+    //  needed to resolve me prior to loading this ctrl
 
-    self.me = User.get();
-    self.myLocation;
+    //  as of now, manually update respitebnb-dev user to add location
+    //  need to make location a db field upon registration
+    /*  db.users.update(
+          {name: "Gary Michael Cooper"
+          },
+          {$set:
+            {location:
+              {latitude: 35.2291198, longitude: -80.8423344}
+            }
+          }
+        )
+    */
+
+    //self.me = User.get();
+    self.me = me;
+    console.log('me ',self.me);
 
     self.map = {
       center: {
-        latitude: 35.2290372,
-        longitude: -80.842444
+        //  defaults to stanford graduate school of business
+        latitude: self.me.location.latitude || 37.42817,
+        longitude: self.me.location.longitude || -122.161492
       },
       zoom: 8
     };
 
     self.myMarker = {
       coords: self.map.center,
-      idKey: 1
+      idKey: 1,
+      options: {
+        //icon:'//developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+        icon:'.././assets/images/google-maps-blue-marker.png'
+      },
     }
 
     self.availableHostMarkers = [
@@ -75,12 +95,9 @@
       }
     ];
 
-    if (navigator.geolocation) {
-      myLocation = Location.getMyLocation();
 
-    } else {
-      $scope.noLocationAvailable = true;
-    }
+
+
 
     //
     //$http.get('/api/things').then(function(response) {

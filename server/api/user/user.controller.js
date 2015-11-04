@@ -119,6 +119,7 @@ exports.me = function(req, res, next) {
       if (!user) {
         return res.status(401).end();
       }
+      console.log('user found: ', user);
       res.json(user);
     })
     .catch(function(err) {
