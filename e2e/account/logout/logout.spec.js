@@ -1,7 +1,7 @@
 'use strict';
 
 var config = browser.params;
-var UserModel = require(config.serverConfig.root + '/server/api/user/user.model');
+var UserModel = require(config.serverConfig.root + '/server/api/host/host.model');
 
 describe('Logout View', function() {
   var login = function(user) {
@@ -28,7 +28,7 @@ describe('Logout View', function() {
 
   describe('with local auth', function() {
 
-    it('should logout a user and redirecting to "/"', function() {
+    it('should logout a host and redirecting to "/"', function() {
       var navbar = require('../../components/navbar/navbar.po');
 
       expect(browser.getCurrentUrl()).toBe(config.baseUrl + '/');

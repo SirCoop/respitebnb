@@ -1,0 +1,38 @@
+<navbar></navbar>
+
+<div class="container">
+  <div class="row ">
+    <div class="user-title">Welcome {{fhost.me.name}}</div>
+  </div>
+  <div class="row">
+    <div id='userLocationDisclaimer' class="user-title"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div ng-if="!noLocationAvailable">Your location <br> lattitude: {{fhost.me.location.latitude}} <br> longitude: {{fhost.me.location.longitude}}</div>
+      <div ng-if="noLocationAvailable">Geolocation is not supported by this browser.</div>
+      <hr>
+      <div>There are <b>{{fhost.availableHostMarkers.length}}</b> hosts available during the dates that you selected.</div>
+    </div>
+    <div class="col-lg-4">
+      <ui-gmap-google-map center="fhost.map.center" zoom="fhost.map.zoom">
+        <ui-gmap-marker coords="fhost.myMarker.coords" options="fhost.myMarker.options" idKey="fhost.myMarker.idKey"></ui-gmap-marker>
+        <ui-gmap-markers models="fhost.availableHostMarkers" coords="'self'" idkey="'id'">
+          <ui-gmap-windows isIconVisibleOnClick="true">
+            <div ng-non-bindable>
+              <div>{{name}}</div>
+              <div>{{address.street}}</div>
+              <div>{{address.city}}, {{address.state}}</div>
+              <div><b>{{distance}} mi</b></div>
+            </div>
+          </ui-gmap-windows>
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
+
+
+
+

@@ -39,7 +39,7 @@ exports.index = function(req, res) {
 };
 
 /**
- * Creates a new user
+ * Creates a new host
  */
 exports.create = function(req, res, next) {
   var newUser = new User(req.body);
@@ -56,7 +56,7 @@ exports.create = function(req, res, next) {
 };
 
 /**
- * Get a single user
+ * Get a single host
  */
 exports.show = function(req, res, next) {
   var userId = req.params.id;
@@ -74,7 +74,7 @@ exports.show = function(req, res, next) {
 };
 
 /**
- * Deletes a user
+ * Deletes a host
  * restriction: 'admin'
  */
 exports.destroy = function(req, res) {
@@ -119,7 +119,7 @@ exports.me = function(req, res, next) {
       if (!user) {
         return res.status(401).end();
       }
-      console.log('user found: ', user);
+      console.log('host found: ', user);
       res.json(user);
     })
     .catch(function(err) {

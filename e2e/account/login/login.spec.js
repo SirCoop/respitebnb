@@ -1,7 +1,7 @@
 'use strict';
 
 var config = browser.params;
-var UserModel = require(config.serverConfig.root + '/server/api/user/user.model');
+var UserModel = require(config.serverConfig.root + '/server/api/host/host.model');
 
 describe('Login View', function() {
   var page;
@@ -42,7 +42,7 @@ describe('Login View', function() {
 
   describe('with local auth', function() {
 
-    it('should login a user and redirecting to "/"', function() {
+    it('should login a host and redirecting to "/"', function() {
       page.login(testUser);
 
       var navbar = require('../../components/navbar/navbar.po');

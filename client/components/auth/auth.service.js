@@ -21,10 +21,10 @@ angular.module('respitebnbApp')
     return {
 
       /**
-       * Authenticate user and save token
+       * Authenticate host and save token
        *
        * @param  {Object}   user     - login info
-       * @param  {Function} callback - optional, function(error, user)
+       * @param  {Function} callback - optional, function(error, host)
        * @return {Promise}
        */
       login: function(user, callback) {
@@ -50,7 +50,7 @@ angular.module('respitebnbApp')
       },
 
       /**
-       * Delete access token and user info
+       * Delete access token and host info
        */
       logout: function() {
         $cookies.remove('token');
@@ -58,10 +58,10 @@ angular.module('respitebnbApp')
       },
 
       /**
-       * Create a new user
+       * Create a new host
        *
-       * @param  {Object}   user     - user info
-       * @param  {Function} callback - optional, function(error, user)
+       * @param  {Object}   user     - host info
+       * @param  {Function} callback - optional, function(error, host)
        * @return {Promise}
        */
       createUser: function(user, callback) {
@@ -82,7 +82,7 @@ angular.module('respitebnbApp')
        *
        * @param  {String}   oldPassword
        * @param  {String}   newPassword
-       * @param  {Function} callback    - optional, function(error, user)
+       * @param  {Function} callback    - optional, function(error, host)
        * @return {Promise}
        */
       changePassword: function(oldPassword, newPassword, callback) {
@@ -97,10 +97,10 @@ angular.module('respitebnbApp')
       },
 
       /**
-       * Gets all available info on a user
+       * Gets all available info on a host
        *   (synchronous|asynchronous)
        *
-       * @param  {Function|*} callback - optional, funciton(user)
+       * @param  {Function|*} callback - optional, funciton(host)
        * @return {Object|Promise}
        */
       getCurrentUser: function(callback) {
@@ -120,7 +120,7 @@ angular.module('respitebnbApp')
       },
 
       /**
-       * Check if a user is logged in
+       * Check if a host is logged in
        *   (synchronous|asynchronous)
        *
        * @param  {Function|*} callback - optional, function(is)
@@ -140,7 +140,7 @@ angular.module('respitebnbApp')
       },
 
        /**
-        * Check if a user is an admin
+        * Check if a host is an admin
         *   (synchronous|asynchronous)
         *
         * @param  {Function|*} callback - optional, function(is)

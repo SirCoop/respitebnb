@@ -32,7 +32,7 @@ describe('User Model', function() {
       .eventually.have.length(0);
   });
 
-  it('should fail when saving a duplicate user', function() {
+  it('should fail when saving a duplicate host', function() {
     return user.saveAsync()
       .then(function() {
         var userDup = genUser();
@@ -52,11 +52,11 @@ describe('User Model', function() {
       return user.saveAsync();
     });
 
-    it('should authenticate user if valid', function() {
+    it('should authenticate host if valid', function() {
       user.authenticate('password').should.be.true;
     });
 
-    it('should not authenticate user if invalid', function() {
+    it('should not authenticate host if invalid', function() {
       user.authenticate('blah').should.not.be.true;
     });
 

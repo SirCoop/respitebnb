@@ -6,11 +6,11 @@
 
 import config from './environment';
 
-// When the user disconnects.. perform this
+// When the host disconnects.. perform this
 function onDisconnect(socket) {
 }
 
-// When the user connects.. perform this
+// When the host connects.. perform this
 function onConnect(socket) {
   // When the client emits 'info', this listens and executes
   socket.on('info', function(data) {

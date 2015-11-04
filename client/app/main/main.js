@@ -9,11 +9,11 @@ angular.module('respitebnbApp')
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('user', {
-        url: '/user',
-        templateUrl: 'app/user/user.html',
-        controller: 'UserController',
-        controllerAs: 'user',
+      .state('findHost', {
+        url: '/findHost',
+        templateUrl: 'app/host/findHost.html',
+        controller: 'FindHostController',
+        controllerAs: 'fhost',
         resolve: {
         //  myPosition: function (Location) {
         //    return Location.getMyPosition();

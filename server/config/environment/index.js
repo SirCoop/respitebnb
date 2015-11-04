@@ -32,7 +32,7 @@ var all = {
     session: 'respitebnb-secret'
   },
 
-  // List of user roles
+  // List of host roles
   userRoles: ['guest', 'user', 'admin'],
 
   // MongoDB connection options

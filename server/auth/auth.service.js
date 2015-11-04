@@ -11,7 +11,7 @@ var validateJwt = expressJwt({
 });
 
 /**
- * Attaches the user object to the request if authenticated
+ * Attaches the host object to the request if authenticated
  * Otherwise returns 403
  */
 function isAuthenticated() {
@@ -24,7 +24,7 @@ function isAuthenticated() {
       }
       validateJwt(req, res, next);
     })
-    // Attach user to request
+    // Attach host to request
     .use(function(req, res, next) {
       User.findByIdAsync(req.user._id)
         .then(function(user) {
@@ -41,7 +41,7 @@ function isAuthenticated() {
 }
 
 /**
- * Checks if the user role meets the minimum requirements of the route
+ * Checks if the host role meets the minimum requirements of the route
  */
 function hasRole(roleRequired) {
   if (!roleRequired) {

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Removes server error when user updates input
+ * Removes server error when host updates input
  */
 angular.module('respitebnbApp')
   .directive('mongooseError', function () {
