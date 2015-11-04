@@ -4,12 +4,12 @@ angular.module('respitebnbApp')
   .controller('NavbarCtrl', function ($scope, Auth) {
     $scope.menu = [
       {
-        'title': 'Home',
-        'state': 'main'
+        'title': 'Host',
+        'state': 'bhost'
       },
       {
-        'title': 'User Home',
-        'state': 'user'
+        'title': 'find Host',
+        'state': 'findHost'
       }
     ];
 
