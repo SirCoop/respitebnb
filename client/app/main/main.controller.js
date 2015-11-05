@@ -5,24 +5,24 @@ function MainController($scope, $http, socket, User) {
   var self = this;
   var usr = User.get();
 
-  this.awesomeThings = [];
-
-  $http.get('/api/things').then(function(response) {
-    self.awesomeThings = response.data;
-    socket.syncUpdates('thing', self.awesomeThings);
-  });
-
-  this.addThing = function() {
-    if (self.newThing === '') {
-      return;
-    }
-    $http.post('/api/things', { name: self.newThing });
-    self.newThing = '';
-  };
-
-  this.deleteThing = function(thing) {
-    $http.delete('/api/things/' + thing._id);
-  };
+  //this.awesomeThings = [];
+  //
+  //$http.get('/api/things').then(function(response) {
+  //  self.awesomeThings = response.data;
+  //  socket.syncUpdates('thing', self.awesomeThings);
+  //});
+  //
+  //this.addThing = function() {
+  //  if (self.newThing === '') {
+  //    return;
+  //  }
+  //  $http.post('/api/things', { name: self.newThing });
+  //  self.newThing = '';
+  //};
+  //
+  //this.deleteThing = function(thing) {
+  //  $http.delete('/api/things/' + thing._id);
+  //};
 
   $scope.$on('$destroy', function() {
     socket.unsyncUpdates('thing');
@@ -74,7 +74,7 @@ $scope.testApi = function () {
     //  location not available in browser
     $scope.locationUnavailable = true;
   }
-  $http.post('/api/users/me/location', usr);
+  //$http.post('/api/users/me/location', usr);
 
 };
 

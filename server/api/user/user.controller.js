@@ -131,20 +131,26 @@ exports.me = function(req, res, next) {
  * Update my location
  */
 exports.updateUserLocation = function(req, res, next) {
+  console.log('API CALLED!', req.body);
   var obj = {};
   obj.user_id = req.body.person._id;
   obj.latitude = req.body.latitude;
   obj.longitude = req.body.longitude;
 
-  User.findOneAsync({ _id: obj.user_id }, '-salt -hashedPassword')
+  //User.update({ _id: obj.user_id }, { location: {latitude: obj.latitude, longitude: obj.longitude}}, function (err, mongoRes) {
+  //  if (err) return handleError(err);
+  //  console.log('The raw response from Mongo was ', mongoRes);
+  //});
+
+  User.findOneAsync({ _id: req.body.person._id }, '-salt -hashedPassword')
     .then(function(user) { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
       }
       //console.log('user TO update: ', user);
       console.log('OBJ TO USE: ', obj);
-      user.location.latitude = obj.latitude;
-      user.location.longitude = obj.longitude;
+      user.location.latitude = req.body.latitude;
+      user.location.longitude = req.body.longitude;
       return user.saveAsync()
         .then(function() {
           console.log('UPDATING USER LOCATION!: ');
@@ -156,6 +162,8 @@ exports.updateUserLocation = function(req, res, next) {
     .catch(function(err) {
       return next(err);
     });
+
+
 };
 
 /**
