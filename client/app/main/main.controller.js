@@ -10,6 +10,7 @@ function MainController($scope, $http, socket, me) {
 
   if (self.me.location) {
     $scope.locationUnavailable = false;
+    $scope.agreeToLocation = true;
   }
 
   //this.awesomeThings = [];
