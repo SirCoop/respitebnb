@@ -7,7 +7,12 @@ angular.module('respitebnbApp')
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+          me: function (User) {
+            return User.get();
+          }
+        }
       })
       .state('findHost', {
         url: '/findHost',

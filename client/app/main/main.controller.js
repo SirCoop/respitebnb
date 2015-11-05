@@ -1,11 +1,13 @@
 'use strict';
 (function() {
 
-function MainController($scope, $http, socket, User) {
-  //var self = this;
-  var usr = User.get();
+function MainController($scope, $http, socket, me) {
+  var self = this;
 
-  if (usr.location) {
+  self.me = me;
+  //var usr = User.get();
+
+  if (self.me.location) {
     $scope.locationUnavailable = false;
   }
 
@@ -60,7 +62,7 @@ $scope.testApi = function () {
     navigator.geolocation.getCurrentPosition(function (position) {
       // set up user location obj
       var location = {};
-      location.person = usr;
+      location.person = self.me;
       location.latitude = position.coords.latitude;
       location.longitude = position.coords.longitude;
       // make api call to update user db info
