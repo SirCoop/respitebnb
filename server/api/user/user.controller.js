@@ -138,11 +138,6 @@ exports.updateUserLocation = function(req, res, next) {
   obj.latitude = req.body.latitude;
   obj.longitude = req.body.longitude;
 
-  //User.update({ _id: obj.user_id }, { location: {latitude: obj.latitude, longitude: obj.longitude}}, function (err, mongoRes) {
-  //  if (err) return handleError(err);
-  //  console.log('The raw response from Mongo was ', mongoRes);
-  //});
-
   User.findOneAsync({ _id: req.body.person._id }, '-salt -hashedPassword')
     .then(function(user) { // don't ever give out the password or salt
       if (!user) {
