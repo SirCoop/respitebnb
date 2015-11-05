@@ -10,7 +10,7 @@ angular.module('respitebnbApp')
         controllerAs: 'home',
       })
       .state('main', {
-        url: '/welcome',
+        url: '/getstarted',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main',

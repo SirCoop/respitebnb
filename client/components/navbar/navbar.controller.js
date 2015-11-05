@@ -18,7 +18,7 @@ angular.module('respitebnbApp')
     $scope.isAdmin = Auth.isAdmin;
     //  fetch user model
     $scope.getCurrentUser = Auth.getCurrentUser();
-    console.log('navbar user: ', $scope);
+    console.log('navbar user: ', $scope.getCurrentUser);
 
     $scope.logout = function () {
       Auth.logout();

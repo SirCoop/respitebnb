@@ -8,6 +8,8 @@ function MainController($scope, $http, socket, me) {
   console.log('ME main ctrl: ', self.me);
   //var usr = User.get();
 
+
+
   if (self.me.location) {
     $scope.locationUnavailable = false;
     $scope.agreeToLocation = true;
