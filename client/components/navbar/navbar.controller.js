@@ -16,11 +16,15 @@ angular.module('respitebnbApp')
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
-    $scope.getCurrentUser = Auth.getCurrentUser;
+    //  fetch user model
+    $scope.getCurrentUser = Auth.getCurrentUser();
+    console.log('navbar user: ', $scope);
 
     $scope.logout = function () {
       Auth.logout();
       $state.go('app');
     };
+
+
 
   });

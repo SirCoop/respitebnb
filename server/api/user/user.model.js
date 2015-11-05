@@ -21,6 +21,7 @@ var UserSchema = new Schema({
   facebook: {},
   github: {},
   location: {
+    agree: Boolean,
     latitude: Number,
     longitude: Number
   }

@@ -45,6 +45,7 @@
     };
 
     self.availableHostMarkers = [
+      //  Charlotte Area
       {
         id: 2,
         latitude: 35.3290372,
@@ -89,6 +90,55 @@
         address: {
           street: '131 Buck Fraley Rd',
           city: 'Cherryville',
+          state: 'NC'
+        },
+        distance: 24
+      },
+      //  RTP Area
+      {
+        id: 6,
+        latitude: 35.925921,
+        longitude: -79.039466,
+        name: 'Michael J.',
+        address: {
+          street: '23 Jordan Rd',
+          city: 'Chapel Hill',
+          state: 'NC'
+        },
+        distance: 186
+      },
+      {
+        id: 7,
+        latitude: 35.988644,
+        longitude: -78.907167,
+        name: 'Mike K.',
+        address: {
+          street: '10 Hippie Ln',
+          city: 'Durham',
+          state: 'NC'
+        },
+        distance: 134
+      },
+      {
+        id: 8,
+        latitude: 35.818835,
+        longitude: -78.644590,
+        name: 'Pat M.',
+        address: {
+          street: '1 Infinite Loop',
+          city: 'Raleigh',
+          state: 'CA'
+        },
+        distance: 13
+      },
+      {
+        id: 9,
+        latitude: 35.995921,
+        longitude: -79.139466,
+        name: 'Julius P.',
+        address: {
+          street: '131 Buck Fraley Rd',
+          city: 'Somewhere',
           state: 'NC'
         },
         distance: 24

@@ -63,12 +63,14 @@ $scope.testApi = function () {
     navigator.geolocation.getCurrentPosition(function (position) {
       // set up user location obj
       var location = {};
+      location.agree = true;
       location.person = self.me;
       location.latitude = position.coords.latitude;
       location.longitude = position.coords.longitude;
       // make api call to update user db info
       $http.post('/api/users/me/location', location).success(function (res) {
         console.log('success res: ', res);
+        angular.element('a.disabled').removeClass('disabled');
       })
       .error(function (err) {
           console.log('error: ', err);
@@ -81,11 +83,8 @@ $scope.testApi = function () {
     //  location not available in browser
     $scope.locationUnavailable = true;
   }
-  //$http.post('/api/users/me/location', usr);
 
 };
-
-
 
 }
 

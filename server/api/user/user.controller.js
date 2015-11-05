@@ -133,6 +133,7 @@ exports.me = function(req, res, next) {
 exports.updateUserLocation = function(req, res, next) {
   console.log('API CALLED!', req.body);
   var obj = {};
+  obj.agree = req.body.agree;
   obj.user_id = req.body.person._id;
   obj.latitude = req.body.latitude;
   obj.longitude = req.body.longitude;
@@ -149,6 +150,7 @@ exports.updateUserLocation = function(req, res, next) {
       }
       //console.log('user TO update: ', user);
       console.log('OBJ TO USE: ', obj);
+      user.location.agree = req.body.agree;
       user.location.latitude = req.body.latitude;
       user.location.longitude = req.body.longitude;
       return user.saveAsync()

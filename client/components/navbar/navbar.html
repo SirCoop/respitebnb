@@ -10,17 +10,19 @@
       <a href="/" class="navbar-brand">respitebnb</a>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
+      <ul id="app-nav" class="nav navbar-nav">
         <li ng-repeat="item in menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
+            <a ng-class="{disabled : !getCurrentUser.location}" ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
-        <li ng-show="isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+        <li ng-show="isAdmin()" ui-sref-active="active">
+          <a ui-sref="admin">Admin</a>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-        <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>
+        <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser.name }}</p> </li>
         <li ng-show="isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
         <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Logout</a></li>
       </ul>
