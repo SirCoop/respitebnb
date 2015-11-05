@@ -24,7 +24,7 @@
 
     //self.me = User.get();
     self.me = me;
-    console.log('me ',self.me);
+    console.log('me ',self.me.location);
 
     self.map = {
       center: {
