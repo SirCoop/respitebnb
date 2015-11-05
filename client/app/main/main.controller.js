@@ -5,6 +5,7 @@ function MainController($scope, $http, socket, me) {
   var self = this;
 
   self.me = me;
+  console.log('ME main ctrl: ', self.me);
   //var usr = User.get();
 
   if (self.me.location) {
