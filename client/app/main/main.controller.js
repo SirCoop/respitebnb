@@ -2,8 +2,12 @@
 (function() {
 
 function MainController($scope, $http, socket, User) {
-  var self = this;
+  //var self = this;
   var usr = User.get();
+
+  if (usr.location) {
+    $scope.locationUnavailable = false;
+  }
 
   //this.awesomeThings = [];
   //
