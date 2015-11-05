@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('respitebnbApp')
-  .controller('NavbarCtrl', function ($scope, Auth) {
+  .controller('NavbarCtrl', function ($scope, Auth, $state) {
     $scope.menu = [
       {
         'title': 'Host',
@@ -17,4 +17,10 @@ angular.module('respitebnbApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+
+    $scope.logout = function () {
+      Auth.logout();
+      $state.go('app');
+    };
+
   });

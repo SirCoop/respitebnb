@@ -10,12 +10,12 @@ angular.module('respitebnbApp')
       })
       .state('logout', {
         url: '/logout?referrer',
-        referrer: 'main',
+        referrer: 'app',
         template: '',
         controller: function($state, Auth) {
           var referrer = $state.params.referrer ||
                           $state.current.referrer ||
-                          'main';
+                          'app';
           Auth.logout();
           $state.go(referrer);
         }

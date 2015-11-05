@@ -3,8 +3,14 @@
 angular.module('respitebnbApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('main', {
+      .state('app', {
         url: '/',
+        templateUrl: 'app/home/home.html',
+        controller: 'HomeController',
+        controllerAs: 'home',
+      })
+      .state('main', {
+        url: '/welcome',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main',
