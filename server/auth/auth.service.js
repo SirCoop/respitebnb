@@ -80,7 +80,7 @@ function setTokenCookie(req, res) {
   var token = signToken(req.user._id, req.user.role);
   console.log('FB AUTH TOKEN: ', token);
   res.cookie('token', token);
-  res.redirect('/');
+  res.redirect('/getstarted');
 }
 
 exports.isAuthenticated = isAuthenticated;
