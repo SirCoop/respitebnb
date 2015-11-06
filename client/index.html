@@ -11,6 +11,23 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script type="text/javascript">
+      if (window.location.hash && window.location.hash == '#_=_') {
+        if (window.history && history.pushState) {
+          window.history.pushState("", document.title, window.location.pathname);
+        } else {
+          // Prevent scrolling by storing the page's current scroll offset
+          var scroll = {
+            top: document.body.scrollTop,
+            left: document.body.scrollLeft
+          };
+          window.location.hash = '';
+          // Restore the scroll offset, should be flicker free
+          document.body.scrollTop = scroll.top;
+          document.body.scrollLeft = scroll.left;
+        }
+      }
+    </script>
     <!--<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>-->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
