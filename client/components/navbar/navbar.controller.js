@@ -8,7 +8,7 @@ angular.module('respitebnbApp')
         'state': 'behost'
       },
       {
-        'title': 'find Host',
+        'title': 'Find Host',
         'state': 'findHost'
       }
     ];
