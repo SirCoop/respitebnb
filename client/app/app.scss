@@ -29,6 +29,11 @@ a.disabled {
   cursor: default;
 }
 
+#map {
+  width: 400px;
+  height: 400px;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'admin/admin.scss';

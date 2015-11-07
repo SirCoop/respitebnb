@@ -15,19 +15,20 @@
       <div>There are <b>{{fhost.availableHostMarkers.length}}</b> hosts available during the dates that you selected.</div>
     </div>
     <div class="col-lg-4">
-      <ui-gmap-google-map center="fhost.map.center" zoom="fhost.map.zoom">
-        <ui-gmap-marker coords="fhost.myMarker.coords" options="fhost.myMarker.options" idKey="fhost.myMarker.idKey"></ui-gmap-marker>
-        <ui-gmap-markers models="fhost.availableHostMarkers" coords="'self'" idkey="'id'">
-          <ui-gmap-windows isIconVisibleOnClick="true">
-            <div ng-non-bindable>
-              <div>{{name}}</div>
-              <div>{{address.street}}</div>
-              <div>{{address.city}}, {{address.state}}</div>
-              <div><b>{{distance}} mi</b></div>
-            </div>
-          </ui-gmap-windows>
-        </ui-gmap-markers>
-      </ui-gmap-google-map>
+      <div id="map"></div>
+      <!--<ui-gmap-google-map center="fhost.map.center" zoom="fhost.map.zoom">-->
+        <!--<ui-gmap-marker coords="fhost.myMarker.coords" options="fhost.myMarker.options" idKey="fhost.myMarker.idKey"></ui-gmap-marker>-->
+        <!--<ui-gmap-markers models="fhost.availableHostMarkers" coords="'self'" idkey="'id'">-->
+          <!--<ui-gmap-windows isIconVisibleOnClick="true">-->
+            <!--<div ng-non-bindable>-->
+              <!--<div>{{name}}</div>-->
+              <!--<div>{{address.street}}</div>-->
+              <!--<div>{{address.city}}, {{address.state}}</div>-->
+              <!--<div><b>{{distance}} mi</b></div>-->
+            <!--</div>-->
+          <!--</ui-gmap-windows>-->
+        <!--</ui-gmap-markers>-->
+      <!--</ui-gmap-google-map>-->
     </div>
     <div class="col-lg-4"></div>
   </div>
