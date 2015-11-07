@@ -64,6 +64,7 @@ function MainController($scope, $http, socket, me) {
       //  location not available in browser
       $scope.locationUnavailable = true;
     }
+    // test
   })();
 
   //$scope.testApi = function () {
