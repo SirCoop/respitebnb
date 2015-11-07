@@ -39,55 +39,60 @@ function MainController($scope, $http, socket, me) {
   });
 
   //  get user location, add to db for user
-  //(function () {
+  (function () {
+    if (!!navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        // set up user location obj
+        var location = {};
+        location.agree = true;
+        location.person = self.me;
+        location.latitude = position.coords.latitude;
+        location.longitude = position.coords.longitude;
+        // make api call to update user db info
+        $http.post('/api/users/me/location', location).success(function (res) {
+          console.log('success res: ', res);
+          angular.element('a.disabled').removeClass('disabled');
+        })
+          .error(function (err) {
+            console.log('error: ', err);
+          });
+      }, function () {
+        // if err retrieving location
+        $scope.locationUnavailable = true;
+      });
+    } else {
+      //  location not available in browser
+      $scope.locationUnavailable = true;
+    }
+  })();
+
+  //$scope.testApi = function () {
+  //  $scope.agreeToLocation = true;
   //  if (!!navigator.geolocation) {
   //    navigator.geolocation.getCurrentPosition(function (position) {
   //      // set up user location obj
   //      var location = {};
-  //      location.person = usr;
+  //      location.agree = true;
+  //      location.person = self.me;
   //      location.latitude = position.coords.latitude;
   //      location.longitude = position.coords.longitude;
   //      // make api call to update user db info
-  //      $http.post('/api/users/me/location', location);
-  //
+  //      $http.post('/api/users/me/location', location).success(function (res) {
+  //        console.log('success res: ', res);
+  //        angular.element('a.disabled').removeClass('disabled');
+  //      })
+  //      .error(function (err) {
+  //          console.log('error: ', err);
+  //      });
   //    }, function () {
   //      // if err retrieving location
   //      $scope.locationUnavailable = true;
-  //    })
+  //    });
   //  } else {
   //    //  location not available in browser
   //    $scope.locationUnavailable = true;
   //  }
-  //})()
-
-$scope.testApi = function () {
-  $scope.agreeToLocation = true;
-  if (!!navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      // set up user location obj
-      var location = {};
-      location.agree = true;
-      location.person = self.me;
-      location.latitude = position.coords.latitude;
-      location.longitude = position.coords.longitude;
-      // make api call to update user db info
-      $http.post('/api/users/me/location', location).success(function (res) {
-        console.log('success res: ', res);
-        angular.element('a.disabled').removeClass('disabled');
-      })
-      .error(function (err) {
-          console.log('error: ', err);
-      });
-    }, function () {
-      // if err retrieving location
-      $scope.locationUnavailable = true;
-    });
-  } else {
-    //  location not available in browser
-    $scope.locationUnavailable = true;
-  }
-
-};
+  //};
 
 }
 
