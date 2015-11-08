@@ -58,6 +58,7 @@ function MainController($scope, $http, $state, socket, me) {
       })
         .error(function (err) {
           console.log('error: ', err);
+          //  test
         });
     },
     error: function(error){
