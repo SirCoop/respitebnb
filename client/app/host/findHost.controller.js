@@ -6,79 +6,10 @@
 
   function FindHostController($scope, $http, $q, socket, User, Auth, me) {
     var self = this;
-
-
-    //  me is the modified mongo version of User.get()
-    //  needed to resolve me prior to loading this ctrl
-
-    //  as of now, manually update respitebnb-dev host to add location
-    //  need to make location a db field upon registration
-    /*  db.users.update(
-          {name: "Gary Michael Cooper"
-          },
-          {$set:
-            {location:
-              {latitude: 35.2291198, longitude: -80.8423344}
-            }
-          }
-        )
-    */
-
-    //self.me = User.get();
     self.me = me;
     console.log('ME fHost ',self.me);
 
-    //GMaps.geolocate({
-    //  success: function(position){
-    //    map.setCenter(position.coords.latitude, position.coords.longitude);
-    //    map.addMarker({
-    //      lat: position.coords.latitude,
-    //      lng: position.coords.longitude,
-    //      title: '210 N. Church St.',
-    //      infoWindow: {
-    //        content: 'Me'
-    //      },
-    //      icon: '.././assets/images/google-maps-blue-marker.png'
-    //    });
-    //  },
-    //  error: function(error){
-    //    //alert('Geolocation failed: '+ error.message);
-    //    map.setCenter(37.42817, -122.161492);
-    //    map.addMarker({
-    //      lat: 37.42817,
-    //      lng: -122.161492,
-    //      title: 'Stanford',
-    //      infoWindow: {
-    //        content: 'You are here!'
-    //      }
-    //    });
-    //  },
-    //  not_supported: function(){
-    //    alert("Your browser does not support geolocation");
-    //  }
-    //});
-
-
-    var map = new GMaps({
-      el: '#map',
-      lat: self.me.location.latitude,
-      lng: self.me.location.longitude,
-      zoom: 12,
-      zoomControl : true,
-      zoomControlOpt: {
-        style : 'SMALL',
-        position: 'TOP_LEFT'
-      },
-      panControl : false,
-      click: function(e){
-        console.log('click: ', e);
-      },
-      dragend: function(e){
-        console.log('drag: ', e);
-      }
-    });
-
-    map.addMarkers([
+    var hosts = [
       //  Charlotte Area
       {
         lat: 35.3290372,
@@ -145,7 +76,40 @@
           content: 'Me'
         }
       }
-    ]);
+    ];
+
+    self.availableHostMarkers = hosts.length;
+
+    var map = new GMaps({
+      el: '#map',
+      lat: self.me.location.latitude,
+      lng: self.me.location.longitude,
+      zoom: 12,
+      zoomControl : true,
+      zoomControlOpt: {
+        style : 'SMALL',
+        position: 'TOP_LEFT'
+      },
+      panControl : false,
+      click: function(e){
+        console.log('click: ', e);
+      },
+      dragend: function(e){
+        console.log('drag: ', e);
+      }
+    });
+
+    map.addMarker({
+      lat: self.me.location.latitude,
+      lng: self.me.location.longitude,
+      title: 'London Eye',
+      infoWindow: {
+        content: 'big ben'
+      },
+      icon:'.././assets/images/google-maps-blue-marker.png'
+    });
+
+    map.addMarkers(hosts);
 
 
 

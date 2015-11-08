@@ -43,7 +43,6 @@ function MainController($scope, $http, $state, socket, me) {
     $scope.agreeToLocation = true;
   }
 
-
   GMaps.geolocate({
     success: function(position){
       console.log('pos...: ', position);
